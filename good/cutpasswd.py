@@ -14,7 +14,7 @@ with open('/tmp/darkweb2017-top10000.txt') as f:
         if len(re.findall(r'[A-Z]', password)) < 1:
             continue
 
-        if len(re.findall(r'[0-9]', password)) < 1:
+        if len(re.findall(r'\d', password)) < 1:
             continue
 
         print(password)

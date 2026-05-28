@@ -43,7 +43,7 @@ def login(username, password, **kwargs):
     except InvalidKey:
         #print('invalid1')
         return False
-    except Exception as e:
+    except Exception:
         #print('invalid2', e)
         return False
 
