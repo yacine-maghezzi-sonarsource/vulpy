@@ -45,7 +45,6 @@ def do_create():
 
         username = request.form.get('username')
         password = request.form.get('password')
-        email = request.form.get('password')
 
         session['username'] = libuser.login(username, password)
 
