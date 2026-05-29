@@ -17,8 +17,8 @@ from cryptography.exceptions import InvalidKey
 def crack_scrypt(key, salt):
 
     try:
-        salt = unhexlify(sys.argv[1].encode())
-        key = unhexlify(sys.argv[2].encode())
+        salt_bytes = unhexlify(salt.encode())
+        key_bytes = unhexlify(key.encode())
     except binascii.Error:
         print('Non-hexadecimal data on salt and/or key', file=sys.stderr)
         return False
@@ -28,7 +28,7 @@ def crack_scrypt(key, salt):
     for number in range(10000):
 
         kdf = Scrypt(
-            salt=salt,
+            salt=salt_bytes,
             length=32,
             n=2**14,
             r=8,
@@ -37,7 +37,7 @@ def crack_scrypt(key, salt):
         )
 
         try:
-            kdf.verify(str(number).encode(), key)
+            kdf.verify(str(number).encode(), key_bytes)
             print('Cracked! Password:', number)
             break
         except InvalidKey:
