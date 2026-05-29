@@ -11,9 +11,8 @@ mod_posts = Blueprint('mod_posts', __name__, template_folder='templates')
 @mod_posts.route('/<username>')
 def do_view(username=None):
 
-    if not username:
-        if 'username' in g.session:
-            username = g.session['username']
+    if not username and 'username' in g.session:
+        username = g.session['username']
 
     posts = libposts.get_posts(username)
     users = libuser.userlist()

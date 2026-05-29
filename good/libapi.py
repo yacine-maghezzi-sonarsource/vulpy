@@ -12,9 +12,8 @@ not_after = 60 # 1 minute
 
 def keygen(username, password=None, login=True):
 
-    if login:
-        if not libuser.login(username, password):
-            return None
+    if login and not libuser.login(username, password):
+        return None
 
     now = time()
     token = jwt.encode({
