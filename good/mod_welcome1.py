@@ -30,7 +30,7 @@ def do_post():
 
         post(username, text)
 
-        #password = request.form.get('password')
+        
 
         #session['username'] = login(username, password)
 

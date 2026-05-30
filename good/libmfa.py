@@ -32,7 +32,7 @@ def mfa_disable(username):
 
 def mfa_enable(username):
 
-    #secret=pyotp.random_base32()
+    
 
     conn = sqlite3.connect('db_users.sqlite')
     conn.set_trace_callback(print)
@@ -48,7 +48,7 @@ def mfa_enable(username):
 
 def mfa_get_secret(username):
 
-    #secret=pyotp.random_base32()
+    
 
     conn = sqlite3.connect('db_users.sqlite')
     conn.set_trace_callback(print)
@@ -73,8 +73,8 @@ def mfa_reset_secret(username):
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
 
-    #c.execute("UPDATE users SET mfa = ? WHERE username = ?", (secret, username,))
-    #user = c.execute("SELECT * FROM users WHERE username = ?", (username, )).fetchone()
+    
+    
     c.execute("UPDATE users SET mfa_secret = ? WHERE username = ?", (secret, username))
     conn.commit()
 
